@@ -15,7 +15,7 @@ void unittest (string s, char c);
 
 int main (int argc, char* argv[])
 {
-	string userName;
+    string userName;
     char programmedBefore = 'z';
     
     cout << "Welcome, what is your name?" << endl;
