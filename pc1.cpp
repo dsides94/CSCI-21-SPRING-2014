@@ -64,12 +64,12 @@ string greet (string name)
 string checkExperience (char hasExperience)
 {
     hasExperience = toupper(hasExperience);
-	if(hasExperience == 'Y'){
-	    return "Welcome back";
-	} else if(hasExperience == 'N'){
-	    return "Get ready to have some fun";
-	} 
-	return "";
+    if(hasExperience == 'Y'){
+        return "Welcome back";
+    } else if(hasExperience == 'N'){
+        return "Get ready to have some fun";
+    } 
+    return "";
 }
 
 /*
