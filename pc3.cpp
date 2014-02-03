@@ -112,6 +112,7 @@ int rockScissorPaper (char playerOne, char playerTwo)
         return 3;
     }
     
+    // Determine Winner
 	switch (playerOne){
 	    case 'R':
 	        if (playerTwo == 'S'){
@@ -136,7 +137,6 @@ int rockScissorPaper (char playerOne, char playerTwo)
 	        break;
 	}
 	
-	// YOU MUST USE A SWITCH IN THIS FUNCTION
 }
 
 /*
