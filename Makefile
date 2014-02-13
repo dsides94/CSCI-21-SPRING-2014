@@ -1,3 +1,10 @@
+#
+# Grader comments 2014.02.13
+#
+# Add the compile flags that Boyd talked about.
+# Your code doesn't compile with the flags turned
+# on. I have to give you a zero. Sorry. --Rob
+#
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
