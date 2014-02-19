@@ -66,13 +66,13 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+int main ()
 {
 	unittest();
 	
 	return 0;
 }
-
+ 
 string prepareForDisplay (int values[], int size, char separator)
 {
     stringstream ss;
