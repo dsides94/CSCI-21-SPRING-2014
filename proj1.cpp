@@ -129,7 +129,7 @@ int computeAverage (int values [], int arraySize)
 int findMinValue (int values [], int arraySize)
 {
     int min = values[0];
-    for(int i = 0; i < arraySize; i++){
+    for(int i = 1; i < arraySize; i++){
         min = (values[i] < min) ? values[i] : min;
     }
     return min;
@@ -138,7 +138,7 @@ int findMinValue (int values [], int arraySize)
 int findMaxValue (int values [], int arraySize)
 {
     int max = values[0];
-    for(int i = 0; i < arraySize; i++){
+    for(int i = 1; i < arraySize; i++){
         max = (values[i] > max) ? values[i] : max;
     }
     return max;
