@@ -13,7 +13,7 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest (string s, char c);
 
-int main (int argc, char* argv[])
+int main ()
 {
     string userName;
     char programmedBefore = 'z';

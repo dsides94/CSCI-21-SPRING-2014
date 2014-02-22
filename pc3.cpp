@@ -19,7 +19,7 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+int main ()
 {
 	unittest();
 	
@@ -97,14 +97,8 @@ string goldilocks (string item, int number)
  */
 int rockScissorPaper (char playerOne, char playerTwo)
 {
-    string validInput = "RSP";
     playerOne = toupper(playerOne);
     playerTwo = toupper(playerTwo);
-    
-    // Invalid Input
-    if (validInput.find(playerOne) == -1 || validInput.find(playerTwo) == -1){
-        return 0; 
-    }
     
     // Draw
     if (playerOne == playerTwo)
@@ -135,6 +129,9 @@ int rockScissorPaper (char playerOne, char playerTwo)
 	            return 2;
 	        }
 	        break;
+	    default:
+	        return 0;
+	        break;
 	}
 	
 }
@@ -156,7 +153,7 @@ int asciiValue (char c)
  */
 string toLower (string input)
 {
-	for (int i = 0; i < input.length(); i++){
+	for (unsigned int i = 0; i < input.length(); i++){
 	    input[i] = tolower(input[i]);
 	}
 	
@@ -170,7 +167,7 @@ string toLower (string input)
  */
 string toUpper (string input)
 {
-	for (int i = 0; i < input.length(); i++){
+	for (unsigned int i = 0; i < input.length(); i++){
 	    input[i] = toupper(input[i]);
 	}
 	

@@ -7,6 +7,7 @@
 
 FLAGS = -Wall -Wextra -Werror -pedantic
 
+all: pc1 pc2 pc3 pc4 pc6 pc7 proj1 proj2
 
 proj1: proj1.cpp
 	g++ $(FLAGS) proj1.cpp -o proj1
