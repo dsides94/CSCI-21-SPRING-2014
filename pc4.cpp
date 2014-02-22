@@ -22,7 +22,7 @@ void btassert(A assertion);
 void interactiveTest ();
 void unittest ();
 
-int main (int argc, char* argv[])
+int main ()
 {
 	string input;
 	cout << "[1] Do interactive test, [2] Skip to unit test: ";

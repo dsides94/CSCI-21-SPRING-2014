@@ -8,7 +8,7 @@
  *
  * David Sides
  * Date created: 1/29/2014
- * Last date modified: 1/29/2014
+ * Last date modified: 2/21/2014
  */
 #include <cassert>
 #include <climits>
@@ -69,7 +69,7 @@ template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
 
-int main (int argc, char* argv[])
+int main ()
 {
 	unittest();
 	
@@ -80,7 +80,7 @@ void countCharacters (string theString, int& alpha, int& num)
 {
     alpha = 0;
     num = 0;
-    for(int i = 0; i < theString.length(); i++){
+    for(unsigned int i = 0; i < theString.length(); i++){
         char c = theString[i];
         if (c >= '0' && c <= '9'){
             num++;
@@ -92,7 +92,7 @@ void countCharacters (string theString, int& alpha, int& num)
 
 string upAndDown (string theString)
 {
-    for(int i = 0; i < theString.length(); i++){
+    for(unsigned int i = 0; i < theString.length(); i++){
         if (i%2 == 0){
             theString[i] = toupper(theString[i]);
         } else {
@@ -108,7 +108,7 @@ int countWords (string theString)
     int words = 0;
     if(theString.length() > 0){
         words = 1;
-        for(int i = 0; i < theString.length(); i++){
+        for(unsigned int i = 0; i < theString.length(); i++){
             if (theString[i] == ' '){
                 words++;
             }

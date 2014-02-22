@@ -14,12 +14,13 @@
 
 FLAGS = -Wall -Wextra -Werror -pedantic
 
-all: pc1, pc2, pc3, pc4, pc6
+all: pc1 pc2 pc3 pc4 pc6 pc7 proj1 proj2
 
-# Target for programming challenge 1
-# Date completed: 1-29-2014
 proj1: proj1.cpp
 	g++ $(FLAGS) proj1.cpp -o proj1
+	
+proj2: proj2.cpp prize.h prize.cpp
+	g++ $(FLAGS) proj2.cpp prize.cpp -o proj2
 
 # Target for programming challenge 1
 # Date completed: 1-27-2014
