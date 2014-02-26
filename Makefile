@@ -1,10 +1,3 @@
-#
-# Grader comments 2014.02.13
-#
-# Add the compile flags that Boyd talked about.
-# Your code doesn't compile with the flags turned
-# on. I have to give you a zero. Sorry. --Rob
-#
 # Makefile for programming challenges
 #
 # CSCI 21, Spring 2014
@@ -14,7 +7,7 @@
 
 FLAGS = -Wall -Wextra -Werror -pedantic
 
-all: pc1 pc2 pc3 pc4 pc6 pc7 proj1 proj2
+all: pc1 pc2 pc3 pc4 pc6 pc7 pc8 proj1
 
 proj1: proj1.cpp
 	g++ $(FLAGS) proj1.cpp -o proj1
@@ -51,3 +44,8 @@ pc6: pc6.cpp
 # Date completed: 2-19-2014
 pc7: pc7.cpp
 	g++ $(FLAGS) pc7.cpp -o pc7
+	
+# Target for programming challenge 8
+# Date completed: 2-24-2014
+pc8: pc8.cpp
+	g++ $(FLAGS) pc8.cpp -o pc8
