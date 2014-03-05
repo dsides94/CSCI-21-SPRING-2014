@@ -11,9 +11,6 @@ all: pc1 pc2 pc3 pc4 pc6 pc7 pc8 pc9 proj1
 
 proj1: proj1.cpp
 	g++ $(FLAGS) proj1.cpp -o proj1
-	
-proj2: proj2.cpp prize.cpp prize.h box.cpp box.h
-	g++ $(FLAGS) proj2.cpp prize.cpp box.cpp -o proj2
 
 # Target for programming challenge 1
 # Date completed: 1-27-2014
@@ -59,3 +56,8 @@ pc9: pc9.cpp
 # Date completed: 3-3-2014
 pc10: pc10.cpp
 	g++ $(FLAGS) pc10.cpp -o pc10
+	
+# Target for programming challenge 10
+# Date completed: 3-5-2014
+pc11: pc11.cpp
+	g++ $(FLAGS) pc11.cpp -o pc11
