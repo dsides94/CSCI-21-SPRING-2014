@@ -22,8 +22,8 @@ class Prize
 		 *        at the end of name
 		 * @param newValue unsigned int containing a value for this Prize; default argument is 0
 		 */
-		 Prize(string newName = "no name!", unsigned int newValue = 0):
-		    name(newName),
+        Prize(string newName = "no name!", unsigned int newValue = 0):
+            name(newName),
             value(newValue)
          {
              if(value > 100){
@@ -37,13 +37,13 @@ class Prize
 		 * Get this Prize's name
 		 * @return a string containing this Prize's name
 		 */
-		 string getName() const;
+        string getName() const;
 		
 		/*
 		 * Get this Prize's value
 		 * @return an unsigned int containing this Prize's value
 		 */
-		 unsigned int getValue() const;
+        unsigned int getValue() const;
 		
 	private:
 	
