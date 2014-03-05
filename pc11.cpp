@@ -67,22 +67,22 @@ class SecretDoor
 		 * @param newPrize Prize containing a Prize that is "hidden" behind this secret door; default argument 
 		 *        is Prize()
 		 */
-		 SecretDoor(unsigned int newNumber = 1, Prize newPrize = Prize()):
+	    SecretDoor(unsigned int newNumber = 1, Prize newPrize = Prize()):
 		    number(newNumber),
-		    prize(newPrize)
-		 {}
+            prize(newPrize)
+        {}
 		
 		/*
 		 * Get this SecretDoor's number.
 		 * @return an unsigned int containing this SecretDoor's number
 		 */
-		 unsigned int getNumber() const;
+        unsigned int getNumber() const;
 		
 		/*
 		 * Get this SecretDoor's Prize.
 		 * @return the Prize, by reference, "hidden behind" this SecretDoor
 		 */
-		 Prize getPrize() const;
+        Prize getPrize() const;
 		
 	private:
 	
