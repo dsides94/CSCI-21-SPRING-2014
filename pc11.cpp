@@ -14,6 +14,11 @@ class Prize
 	public:
 	
 		// CODE HERE -- DECLARE FUNCTIONS
+		//
+		// Grader comments 2014.03.06
+		//
+		// Boyd wants function implementations outside the class declarations.
+		//
 	
 		/*
 		 * Constructor.
