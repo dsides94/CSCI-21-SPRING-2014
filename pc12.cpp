@@ -110,13 +110,6 @@ int max (int* theArray, unsigned int arraySize)
     return max;
 }
 
-/*
- * Identify the min value in an array.
- * @param theArray the array for which the min value will be identified
- * @param arraySize the size of theArray
- * @return an integer containing the min value in the array
- * @throw ArrayException with the message "NULL ARRAY REFERENCE" if theArray is NULL
- */
 int min (int* theArray, unsigned int arraySize)
 {
     int min = 0;
