@@ -1,96 +1,62 @@
 /*
- * Programming Challenge 11
+ * Programming Challenge 12
  */
 #include <cassert>
-#include <iomanip>
 #include <iostream>
+#include <string>
 using namespace std;
 
 /*
- * Class Prize. A class representing a simple prize, such as for a gameshow.
+ * Allocate memory for a dynamic array of integers.
+ * @param size the desired size of the dynamic array
+ * @return a pointer to the newly allocated integer array
  */
-class Prize
-{
-	public:
-	
-		// CODE HERE -- DECLARE FUNCTIONS
-	
-		/*
-		 * Constructor.
-		 * @param newName string containing a name for this Prize; default argument is "no name!";
-		 *        if newValue is > 100, converts name to all capital letters and concatenates a '!'
-		 *        at the end of name
-		 * @param newValue unsigned int containing a value for this Prize; default argument is 0
-		 */
-        Prize(string newName = "no name!", unsigned int newValue = 0):
-            name(newName),
-            value(newValue)
-         {
-             if(value > 100){
-                for(unsigned int i = 0; i < name.length(); i++)
-                    name[i] = toupper(name[i]);
-                name += '!';
-             }
-         }
-	
-		/*
-		 * Get this Prize's name
-		 * @return a string containing this Prize's name
-		 */
-        string getName() const;
-		
-		/*
-		 * Get this Prize's value
-		 * @return an unsigned int containing this Prize's value
-		 */
-        unsigned int getValue() const;
-		
-	private:
-	
-		string name;
-		unsigned int value;
-};
+int* makeDynoIntArray (unsigned int size);
 
 /*
- * Class SecretDoor. A class representing a "secret door" such as might be used on a game show.
- * Contains a Prize.
+ * Free the memory associated with a dynamic array and NULL out its pointer.
+ * @param theArray a pointer (passed by reference) to a dynamic array of integers
  */
-class SecretDoor
-{
-	public:
-	
-		// CODE HERE -- DECLARE FUNCTIONS
-	
-		/*
-		 * Constructor.
-		 * @param newNumber unsigned int containing a value for this SecretDoor's number; default argument is 1
-		 * @param newPrize Prize containing a Prize that is "hidden" behind this secret door; default argument 
-		 *        is Prize()
-		 */
-	    SecretDoor(unsigned int newNumber = 1, Prize newPrize = Prize()):
-		    number(newNumber),
-            prize(newPrize)
-        {}
-		
-		/*
-		 * Get this SecretDoor's number.
-		 * @return an unsigned int containing this SecretDoor's number
-		 */
-        unsigned int getNumber() const;
-		
-		/*
-		 * Get this SecretDoor's Prize.
-		 * @return the Prize, by reference, "hidden behind" this SecretDoor
-		 */
-        Prize getPrize() const;
-		
-	private:
-	
-		unsigned int number;
-		Prize prize;
-};
+void clearDynoIntArray (int*& theArray);
+
+/*
+ * Compute the sum of an array.
+ * @param theArray the array for which the sum will be computed
+ * @param arraySize the size of theArray
+ * @return an integer containing the sum of the array
+ * @throw ArrayException with the message "NULL ARRAY REFERENCE" if theArray is NULL
+ */
+int sum (int* theArray, unsigned int arraySize);
+
+/*
+ * Identify the max value in an array.
+ * @param theArray the array for which the max value will be identified
+ * @param arraySize the size of theArray
+ * @return an integer containing the max value in the array
+ * @throw ArrayException with the message "NULL ARRAY REFERENCE" if theArray is NULL
+ */
+int max (int* theArray, unsigned int arraySize);
+
+/*
+ * Identify the min value in an array.
+ * @param theArray the array for which the min value will be identified
+ * @param arraySize the size of theArray
+ * @return an integer containing the min value in the array
+ * @throw ArrayException with the message "NULL ARRAY REFERENCE" if theArray is NULL
+ */
+int min (int* theArray, unsigned int arraySize);
 
 /* for unit testing -- do not alter */
+struct ArrayException
+{
+	ArrayException (string newMessage="error")
+	: message(newMessage)
+	{
+	}
+	
+	string message;
+};
+
 template <typename X, typename A>
 void btassert(A assertion);
 void unittest ();
@@ -102,26 +68,61 @@ int main ()
 	return 0;
 }
 
-// CODE HERE -- FUNCTION DEFINITIONS FOR PRIZE; USE INITIALIZER SECTION FOR CONSTRUCTOR
-string Prize::getName() const
+// CODE HERE -- FUNCTION DEFINITIONS
+int* makeDynoIntArray (unsigned int size)
 {
-    return name;
+    return new int[size];
 }
 
-unsigned int Prize::getValue() const
+void clearDynoIntArray (int*& theArray)
 {
-    return value;
+    delete[] theArray;
+    theArray = NULL;
 }
 
-// CODE HERE -- FUNCTION DEFINITIONS FOR SECRETDOOR; USE INITIALIZER SECTION FOR CONSTRUCTOR
-unsigned int SecretDoor::getNumber() const
+int sum (int* theArray, unsigned int arraySize)
 {
-    return number;
+    int sum = 0;
+    if(theArray != NULL){
+        sum = theArray[0];
+        for(unsigned int i = 1; i < arraySize; i++){
+            sum += theArray[i];
+        }
+    }
+    else{
+        throw(ArrayException("NULL ARRAY REFERENCE"));
+    }
+    return sum;
 }
 
-Prize SecretDoor::getPrize() const
+int max (int* theArray, unsigned int arraySize)
 {
-    return prize;
+    int max = 0;
+    if(theArray != NULL){
+        max = theArray[0];
+        for(unsigned int i = 1; i < arraySize; i++){
+            max = (theArray[i] > max) ? theArray[i] : max;
+        }
+    }
+    else{
+        throw(ArrayException("NULL ARRAY REFERENCE"));
+    }
+    return max;
+}
+
+int min (int* theArray, unsigned int arraySize)
+{
+    int min = 0;
+    if(theArray != NULL){
+        min = theArray[0];
+        for(unsigned int i = 1; i < arraySize; i++){
+            min = (theArray[i] < min) ? theArray[i] : min;
+        }
+    }
+    else{
+        throw(ArrayException("NULL ARRAY REFERENCE"));
+    }
+    return min;
 }
 
 /*
@@ -131,64 +132,71 @@ Prize SecretDoor::getPrize() const
 void unittest ()
 {
 	cout << "\nSTARTING UNIT TEST\n\n";
-	Prize * prizePointer;
-	SecretDoor * doorPointer;
+	
+	int* myArray = 0; // = makeDynoIntArray(10);
+	unsigned int myArraySize = 0;
+	
 	try {
-		prizePointer = new Prize();
-		btassert<bool>(prizePointer->getName() == "no name!" && prizePointer->getValue() == 0);
-		cout << "Passed TEST 1: CREATING A PRIZE () \n";
-	} catch (bool b) {
-		cout << "# FAILED TEST 1: CREATING A PRIZE () #\n";
+		sum(myArray, myArraySize);
+		btassert<bool>(false);
+	} catch (ArrayException e) {
+		try {
+			btassert<bool>(e.message == "NULL ARRAY REFERENCE");
+			cout << "Passed TEST 1: sum EXCEPTION HANDLING (INT*) () \n";
+		} catch (bool b) {
+			cout << "# FAILED TEST 1: sum EXCEPTION HANDLING (INT*) () #\n";
+		}
+	} catch (bool) {
+		cout << "# FAILED TEST 1: sum MISSING EXCEPTION #\n";
 	}
-	delete prizePointer;
+	
 	try {
-		prizePointer = new Prize("A Brand New Car");
-		btassert<bool>(prizePointer->getName() == "A Brand New Car" && prizePointer->getValue() == 0);
-		cout << "Passed TEST 2: CREATING A PRIZE (NAME) \n";
-	} catch (bool b) {
-		cout << "# FAILED TEST 2: CREATING A PRIZE (NAME) #\n";
+		min(myArray, myArraySize);
+		btassert<bool>(false);
+	} catch (ArrayException e) {
+		try {
+			btassert<bool>(e.message == "NULL ARRAY REFERENCE");
+			cout << "Passed TEST 2: min EXCEPTION HANDLING (INT*) () \n";
+		} catch (bool b) {
+			cout << "# FAILED TEST 2: min EXCEPTION HANDLING (INT*) () #\n";
+		}
+	} catch (bool) {
+		cout << "# FAILED TEST 2: min MISSING EXCEPTION #\n";
 	}
-	delete prizePointer;
+	
 	try {
-		prizePointer = new Prize("A Couch",1000);
-		btassert<bool>(prizePointer->getName() == "A COUCH!" && prizePointer->getValue() == 1000);
-		cout << "Passed TEST 3: CREATING A PRIZE (NAME,VALUE) \n";
-	} catch (bool b) {
-		cout << "# FAILED TEST 3: CREATING A PRIZE (NAME,VALUE) #\n";
+		max(myArray, myArraySize);
+		btassert<bool>(false);
+	} catch (ArrayException e) {
+		try {
+			btassert<bool>(e.message == "NULL ARRAY REFERENCE");
+			cout << "Passed TEST 3: max EXCEPTION HANDLING (INT*) () \n";
+		} catch (bool b) {
+			cout << "# FAILED TEST 3: max EXCEPTION HANDLING (INT*) () #\n";
+		}
+	} catch (bool) {
+		cout << "# FAILED TEST 3: max MISSING EXCEPTION #\n";
 	}
-
+	
+	myArray = makeDynoIntArray(3);
+	
 	try {
-		doorPointer = new SecretDoor();
-		btassert<bool>(doorPointer->getPrize().getName() == "no name!" && doorPointer->getNumber() == 1);
-		cout << "Passed TEST 4: CREATING A SECRET DOOR () \n";
+		btassert<bool>(myArray != 0);
+		cout << "Passed TEST 4: INT ARRAY INITIALIZATION () \n";
 	} catch (bool b) {
-		cout << "# FAILED TEST 4: CREATING A SECRET DOOR () #\n";
+		cout << "# FAILED TEST 4: INT ARRAY INITIALIZATION () #\n";
 	}
-	delete doorPointer;
+	
+	myArray[0] = 30, myArray[1] = 20, myArray[2] = 10;
+	
 	try {
-		doorPointer = new SecretDoor(5);
-		btassert<bool>(doorPointer->getPrize().getName() == "no name!" && doorPointer->getNumber() == 5);
-		cout << "Passed TEST 5: CREATING A SECRET DOOR (NUMBER) \n";
+		btassert<bool>(sum(myArray, 3) == 60);
+		cout << "Passed TEST 5: sum (array) \n";
 	} catch (bool b) {
-		cout << "# FAILED TEST 5: CREATING A SECRET DOOR (NUMBER) #\n";
+		cout << "# FAILED TEST 5: sum (array) #\n";
 	}
-	delete doorPointer;
+	
 	try {
-		doorPointer = new SecretDoor(5,*prizePointer);
-		btassert<bool>(doorPointer->getPrize().getName() == "A COUCH!" && doorPointer->getNumber() == 5);
-		cout << "Passed TEST 6: CREATING A SECRET DOOR (NUMBER,PRIZE) \n";
-	} catch (bool b) {
-		cout << "# FAILED TEST 6: CREATING A SECRET DOOR (NUMBER,PRIZE) #\n";
-	}
-	delete doorPointer;
-	delete prizePointer;
-		
-	cout << "\nUNIT TEST COMPLETE\n\n";
-}
-
-template <typename X, typename A>
-void btassert (A assertion)
-{
-    if (!assertion)
-		throw X();
-}
+		btassert<bool>(min(myArray, 3) == 10);
+		cout << "Passed TEST 6: min (array) \n";
+	} catch
