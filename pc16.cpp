@@ -136,6 +136,7 @@ ShoppingList::ShoppingList (unsigned int newMaxItems)
 ShoppingList::~ShoppingList ()
 {
     delete[] items;
+    items = NULL;
 }
 
 unsigned int ShoppingList::getMaxItems () const
