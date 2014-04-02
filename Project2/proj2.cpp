@@ -127,7 +127,6 @@ int main ()
                 cout << "[4] Remove Prize\n";
                 cout << "[5] View Prizes\n";
                 cout << "[0] Main Menu\n\n";
-                cout << "Choice: ";
                 
                 choice = inputGetUnsInt("Choice", 0, 5);
                 
