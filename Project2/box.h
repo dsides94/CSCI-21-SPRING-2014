@@ -35,6 +35,11 @@ class Box{
          * @return an unsigned int that is the number of the box.
          */
         unsigned int getBoxNumber() const;
+        
+        /*
+         * Set the box number.
+         * @param newBoxNumber an unsigned int that boxNumber is set to.
+         */
         void setBoxNumber(unsigned int newBoxNumber);
         
         /*
@@ -42,6 +47,11 @@ class Box{
          * @return a string that is the color of the box.
          */
         std::string getBoxColor() const;
+        
+        /*
+         * Set the box color.
+         * @param newBoxColor an unsigned int that boxColor is set to.
+         */
         void setBoxColor(std::string newBoxColor);
         
         /*

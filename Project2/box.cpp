@@ -21,6 +21,7 @@ Box::Box(unsigned int newBoxNumber, std::string newBoxColor, unsigned int newPri
 Box::~Box()
 {
     delete[] prizes;
+    prizes = NULL;
 }
 
 unsigned int Box::getBoxNumber() const

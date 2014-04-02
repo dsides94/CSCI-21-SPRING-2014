@@ -1,7 +1,9 @@
 /*
  * Programming Project 2
  * 
- * 
+ * This program implements a prize class and a box class where you can set data
+ * for the prize and box, and you can add prizes to the box, using a dynamic
+ * array.
  *
  * David Sides
  * Date created: 2/24/2014
@@ -179,7 +181,7 @@ int main ()
                     if(box.getPrizeCount() > 0){
                         for(unsigned int i = 0; i < box.getPrizeCount(); i++){
                             Prize p = box.getPrize(i);
-                            cout << "[" << i << "]: " << "[Name: " << p.getPrizeName() << "] [Value: " << p.getPrizeValue() << "]\n";
+                            cout << "[" << i+1 << "]: " << "[Name: " << p.getPrizeName() << "] [Value: " << p.getPrizeValue() << "]\n";
                         }
                     }
                     else{
