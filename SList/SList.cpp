@@ -33,11 +33,8 @@ void SList::removeHead()
 
 void SList::clear()
 {
-    size = 0;
     while(head != NULL){
-        SLNode *nextHead = head->getNextNode();
-        delete head;
-        head = nextHead;
+        removeHead();
     }
 }
 
