@@ -48,24 +48,19 @@ unsigned int SList::getSize() const
 
 std::string SList::toString() const
 {
-    if(size > 0){
-        std::stringstream ss;
-        SLNode *node = head;
-        
-        while(node != NULL){
-            ss << node->getContents();
-            node = node->getNextNode();
-            if(node != NULL){
-                ss << ',';
-            }
+    std::stringstream ss;
+    SLNode *node = head;
+    
+    while(node != NULL){
+        ss << node->getContents();
+        node = node->getNextNode();
+        if(node != NULL){
+            ss << ',';
         }
-        std::string str = ss.str();
-        
-        return ss.str();
     }
-    else{
-        return "";
-    }
+    std::string str = ss.str();
+    
+    return ss.str();
 }
 
 /*
