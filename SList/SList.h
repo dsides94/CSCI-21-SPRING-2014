@@ -5,49 +5,48 @@
 
 class SList{
     public:
+        /*
+         * Default constructor.
+         * Initializes head to NULL and size to 0.
+         */
         SList();
+        
+        /*
+         * Default deconstructor that deletes all nodes in this list, by
+         * calling the clear function.
+         */
         ~SList();
         
+        /*
+         * Adds a node to this list, and set it to the head of the list.
+         * @param contents an int that is the contents of the new node.
+         */
         void insertHead(int contents);
+        
+        /*
+         * Removes the head node for this list.
+         */
         void removeHead();
         
+        /*
+         * Deletes every node in this list, clearing it.
+         */
         void clear();
         
+        /*
+         * Get the size of this list, which is the number of nodes in it.
+         * @return an unsigned int that is the size of this list.
+         */
         unsigned int getSize() const;
         
+        /*
+         * Builds a string representation of the contents of every node in
+         * this list.
+         * @return a string that is the string representation of this list.
+         */
         std::string toString() const;
         
     private:
         SLNode *head;
         unsigned int size;
 };
-
-/*Declare and implement a class that provides the following interface EXACTLY.
-
-class name: SList
-
-private data members:
-
-	head, SLNode* that points to the first node in a singly-linked list
-	size, unsigned int the count of the number of nodes in the list
-
-public function interface:
-
-	default constructor, sets values head(NULL) and size(0)
-	
-	destructor, calls the clear function
-	
-	void insertHead (int), create a new SLNode and attach as head of list
-	
-	void removeHead (), remove the head node from the list
-	
-	void clear (), clear the entire contents of the list, freeing all memory
-	               associated with all nodes
-	
-	unsigned int getSize () const
-	
-	string toString () const, return a string representation of the contents
-	                          of all nodes in the list, in the format
-	                          NUM1,NUM2,...,LASTNUM; return empty string on 
-	                          empty list
-*/
