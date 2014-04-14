@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wextra -Werror -pedantic
+FLAGS = -Wall -Wextra -Werror -pedantic -Wno-newline-eof
 
 # Target for programming challenge 19
 # Date completed: 4-14-2014

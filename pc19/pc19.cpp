@@ -102,10 +102,11 @@ void unittest ()
 	list.removeTail();
 	try {
 		btassert<bool>(list.getSize() == 0);
-		cout << "Passed TEST 10: removeTail \n"; 
+		cout << "Passed TEST 10: removeTail \n";
 	} catch (bool b) {
 		cout << "# FAILED TEST 10: removeTail #\n";
 	}
+	
 	list.insertHead(10);
 	list.insertTail(20);
 	try {
