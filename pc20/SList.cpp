@@ -1,6 +1,5 @@
 #include "SList.h"
 #include <sstream>
-#include <iostream>
 
 SList::SList()
 : head(NULL),
@@ -149,7 +148,6 @@ std::string SList::toString() const
         }
     }
     std::string str = ss.str();
-    //std::cout << ss.str()
     
     return ss.str();
 }
