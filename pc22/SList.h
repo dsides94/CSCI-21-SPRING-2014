@@ -199,6 +199,7 @@ class SList{
             while(head != NULL){
                 removeHead();
             }
+            size = 0;
         }
         
         /*

@@ -128,6 +128,7 @@ void SList::clear()
     while(head != NULL){
         removeHead();
     }
+    size = 0;
 }
 
 unsigned int SList::getSize() const
