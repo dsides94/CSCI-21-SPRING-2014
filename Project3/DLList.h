@@ -163,6 +163,9 @@ class DLList{
             if(head == NULL || head->getContents() >= contents){
                 pushFront(contents);
             }
+            else if(tail->getContents() >= contents){
+                pushBack(contents);
+            }
             else{
                 DLNode<T> *node = head;
                 DLNode<T> *prevNode = NULL;
@@ -194,33 +197,31 @@ class DLList{
          */
         bool removeFirst(T target){
             bool targetFound = false;
+        
+            DLNode<T> *node = head;
             
-            if(head != NULL){
-                if(head->getContents() == target){
-                    popFront();
-                    targetFound = true;
-                }
-                else{
-                    DLNode<T> *node = head;
-                    DLNode<T> *prevNode = NULL;
-                    
-                    while(node != NULL){
-                        if(node->getContents() == target){
-                            size--;
-                            if(prevNode != NULL){
-                                prevNode->setNext(node->getNext());
-                            }
-                            if(node->getNext() != NULL){
-                                node->getNext()->setPrevious(prevNode);
-                            }
-                            delete node;
-                            targetFound = true;
-                            break;
-                        }
-                        prevNode = node;
-                        node = node->getNext();
+            while(node != NULL){
+                DLNode<T> *prevNode = node->getPrevious();
+                DLNode<T> *nextNode = node->getNext();
+                
+                if(node->getContents() == target){
+                    if(node == head){
+                        popFront();
                     }
+                    else if(node == tail){
+                        popBack();
+                    }
+                    else{
+                        size--;
+                        prevNode->setNext(nextNode);
+                        nextNode->setPrevious(prevNode);
+                        delete node;
+                        targetFound = true;
+                    }
+                    targetFound = true;
+                    break;
                 }
+                node = nextNode;
             }
             
             return targetFound;
@@ -233,36 +234,29 @@ class DLList{
          */
         bool removeAll(T target){
             bool targetFound = false;
+        
+            DLNode<T> *node = head;
             
-            if(head != NULL){
-                if(head->getContents() == target){
-                    popFront();
+            while(node != NULL){
+                DLNode<T> *prevNode = node->getPrevious();
+                DLNode<T> *nextNode = node->getNext();
+                
+                if(node->getContents() == target){
+                    if(node == head){
+                        popFront();
+                    }
+                    else if(node == tail){
+                        popBack();
+                    }
+                    else{
+                        size--;
+                        prevNode->setNext(nextNode);
+                        nextNode->setPrevious(prevNode);
+                        delete node;
+                    }
                     targetFound = true;
                 }
-                else{
-                    DLNode<T> *node = head;
-                    DLNode<T> *prevNode = NULL;
-                    DLNode<T> *nextNode = NULL;
-                    
-                    while(node != NULL){
-                        if(node->getContents() == target){
-                            size--;
-                            if(prevNode != NULL){
-                                prevNode->setNext(node->getNext());
-                            }
-                            if(node->getNext() != NULL){
-                                node->getNext()->setPrevious(prevNode);
-                            }
-                            nextNode = node->getNext();
-                            delete node;
-                            node = nextNode;
-                            targetFound = true;
-                        } else{
-                            prevNode = node;
-                            node = node->getNext();
-                        }
-                    }
-                }
+                node = nextNode;
             }
             
             return targetFound;
