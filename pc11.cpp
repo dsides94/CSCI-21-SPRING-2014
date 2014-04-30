@@ -132,71 +132,64 @@ int min (int* theArray, unsigned int arraySize)
 void unittest ()
 {
 	cout << "\nSTARTING UNIT TEST\n\n";
-	
-	int* myArray = 0; // = makeDynoIntArray(10);
-	unsigned int myArraySize = 0;
-	
+	Prize * prizePointer;
+	SecretDoor * doorPointer;
 	try {
-		sum(myArray, myArraySize);
-		btassert<bool>(false);
-	} catch (ArrayException e) {
-		try {
-			btassert<bool>(e.message == "NULL ARRAY REFERENCE");
-			cout << "Passed TEST 1: sum EXCEPTION HANDLING (INT*) () \n";
-		} catch (bool b) {
-			cout << "# FAILED TEST 1: sum EXCEPTION HANDLING (INT*) () #\n";
-		}
-	} catch (bool) {
-		cout << "# FAILED TEST 1: sum MISSING EXCEPTION #\n";
-	}
-	
-	try {
-		min(myArray, myArraySize);
-		btassert<bool>(false);
-	} catch (ArrayException e) {
-		try {
-			btassert<bool>(e.message == "NULL ARRAY REFERENCE");
-			cout << "Passed TEST 2: min EXCEPTION HANDLING (INT*) () \n";
-		} catch (bool b) {
-			cout << "# FAILED TEST 2: min EXCEPTION HANDLING (INT*) () #\n";
-		}
-	} catch (bool) {
-		cout << "# FAILED TEST 2: min MISSING EXCEPTION #\n";
-	}
-	
-	try {
-		max(myArray, myArraySize);
-		btassert<bool>(false);
-	} catch (ArrayException e) {
-		try {
-			btassert<bool>(e.message == "NULL ARRAY REFERENCE");
-			cout << "Passed TEST 3: max EXCEPTION HANDLING (INT*) () \n";
-		} catch (bool b) {
-			cout << "# FAILED TEST 3: max EXCEPTION HANDLING (INT*) () #\n";
-		}
-	} catch (bool) {
-		cout << "# FAILED TEST 3: max MISSING EXCEPTION #\n";
-	}
-	
-	myArray = makeDynoIntArray(3);
-	
-	try {
-		btassert<bool>(myArray != 0);
-		cout << "Passed TEST 4: INT ARRAY INITIALIZATION () \n";
+		prizePointer = new Prize();
+		btassert<bool>(prizePointer->getName() == "no name!" && prizePointer->getValue() == 0);
+		cout << "Passed TEST 1: CREATING A PRIZE () \n";
 	} catch (bool b) {
-		cout << "# FAILED TEST 4: INT ARRAY INITIALIZATION () #\n";
+		cout << "# FAILED TEST 1: CREATING A PRIZE () #\n";
 	}
-	
-	myArray[0] = 30, myArray[1] = 20, myArray[2] = 10;
-	
+	delete prizePointer;
 	try {
-		btassert<bool>(sum(myArray, 3) == 60);
-		cout << "Passed TEST 5: sum (array) \n";
+		prizePointer = new Prize("A Brand New Car");
+		btassert<bool>(prizePointer->getName() == "A Brand New Car" && prizePointer->getValue() == 0);
+		cout << "Passed TEST 2: CREATING A PRIZE (NAME) \n";
 	} catch (bool b) {
-		cout << "# FAILED TEST 5: sum (array) #\n";
+		cout << "# FAILED TEST 2: CREATING A PRIZE (NAME) #\n";
 	}
-	
+	delete prizePointer;
 	try {
-		btassert<bool>(min(myArray, 3) == 10);
-		cout << "Passed TEST 6: min (array) \n";
-	} catch
+		prizePointer = new Prize("A Couch",1000);
+		btassert<bool>(prizePointer->getName() == "A COUCH!" && prizePointer->getValue() == 1000);
+		cout << "Passed TEST 3: CREATING A PRIZE (NAME,VALUE) \n";
+	} catch (bool b) {
+		cout << "# FAILED TEST 3: CREATING A PRIZE (NAME,VALUE) #\n";
+	}
+
+	try {
+		doorPointer = new SecretDoor();
+		btassert<bool>(doorPointer->getPrize().getName() == "no name!" && doorPointer->getNumber() == 1);
+		cout << "Passed TEST 4: CREATING A SECRET DOOR () \n";
+	} catch (bool b) {
+		cout << "# FAILED TEST 4: CREATING A SECRET DOOR () #\n";
+	}
+	delete doorPointer;
+	try {
+		doorPointer = new SecretDoor(5);
+		btassert<bool>(doorPointer->getPrize().getName() == "no name!" && doorPointer->getNumber() == 5);
+		cout << "Passed TEST 5: CREATING A SECRET DOOR (NUMBER) \n";
+	} catch (bool b) {
+		cout << "# FAILED TEST 5: CREATING A SECRET DOOR (NUMBER) #\n";
+	}
+	delete doorPointer;
+	try {
+		doorPointer = new SecretDoor(5,*prizePointer);
+		btassert<bool>(doorPointer->getPrize().getName() == "A COUCH!" && doorPointer->getNumber() == 5);
+		cout << "Passed TEST 6: CREATING A SECRET DOOR (NUMBER,PRIZE) \n";
+	} catch (bool b) {
+		cout << "# FAILED TEST 6: CREATING A SECRET DOOR (NUMBER,PRIZE) #\n";
+	}
+	delete doorPointer;
+	delete prizePointer;
+		
+	cout << "\nUNIT TEST COMPLETE\n\n";
+}
+
+template <typename X, typename A>
+void btassert (A assertion)
+{
+    if (!assertion)
+		throw X();
+}
