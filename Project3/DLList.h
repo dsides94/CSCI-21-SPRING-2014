@@ -4,14 +4,6 @@
 #include <sstream>
 #include "DLNode.h"
 
-struct DLListException{
-    DLListException (std::string newMessage = "Error")
-    : message(newMessage)
-    {}
-
-    std::string message;
-};
-
 template <typename T>
 class DLList{
     public:
@@ -116,7 +108,7 @@ class DLList{
                 return head->getContents();
             }
             else{
-                throw DLListException("LIST EMPTY");
+                throw "LIST EMPTY";
             }
         }
         
@@ -129,7 +121,7 @@ class DLList{
                 return tail->getContents();
             }
             else{
-                throw DLListException("LIST EMPTY");
+                throw "LIST EMPTY";
             }
         }
         
