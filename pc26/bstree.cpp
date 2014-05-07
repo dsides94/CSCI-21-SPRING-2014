@@ -27,23 +27,20 @@ void BSTree::inOrder(){
 }
 
 bool BSTree::insert(int contents, BSTNode *&root){
-    bool added = false;
-    
     if(root == NULL){
         root = new BSTNode(contents);
         size++;
         return true;
     }
     else if(contents < root->getContents()){
-        added = insert(contents, root->getLeftChild());
+        return insert(contents, root->getLeftChild());
     }
     else if(contents > root->getContents()){
-        added = insert(contents, root->getRightChild());
+        return insert(contents, root->getRightChild());
     }
     else{
         return false;
     }
-    return added;
 }
 
 void BSTree::clear(BSTNode *&root){
