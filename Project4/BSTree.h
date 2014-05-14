@@ -96,7 +96,7 @@ class BSTree{
         int size;
         
         /*
-         * Helper for the insert function.
+         * Helper for the public insert function.
          * @param newContents the data that is inserted into this tree.
          * @param tempRoot the root for the current subtree.
          * @return a bool that is true if the data was not found, and then
@@ -120,7 +120,7 @@ class BSTree{
         }
         
         /*
-         * Helper for the find function.
+         * Helper for the public find function.
          * @param targetData the data being searched for.
          * @param tempRoot the root for the current subtree.
          * @return a bool that is true if the data was found.
@@ -143,7 +143,7 @@ class BSTree{
         }
         
         /*
-         * Helper for the remove function.
+         * Helper for the public remove function.
          * @param targetData the data being removed.
          * @param tempRoot the root for the current subtree.
          * @return a bool that is true if the data was found and removed.
@@ -173,7 +173,7 @@ class BSTree{
         }
         
         /*
-         * Helper for the remove function.
+         * Helper for the public remove function.
          * @param removed a reference to the data for a node.
          * @param tempRoot the root for the current subtree.
          */
@@ -190,7 +190,7 @@ class BSTree{
         }
         
         /*
-         * Helper for the get function.
+         * Helper for the public get function.
          * @param targetData the data being searched for.
          * @param tempRoot the root for the current subtree.
          * @return a pointer to the data if found, NULL if not.
@@ -213,7 +213,7 @@ class BSTree{
         }
         
         /* 
-         * Helper for the clear function.
+         * Helper for the public clear function.
          * @param tempRoot the root for the current subtree.
          */
         void clear(BSTNode<T> *&tempRoot){
@@ -227,7 +227,7 @@ class BSTree{
         }
         
         /* 
-         * Helper for the inOrder function.
+         * Helper for the public inOrder function.
          * @param tempRoot the root for the current subtree.
          */
         void inOrder(BSTNode<T> *&tempRoot){
@@ -239,7 +239,7 @@ class BSTree{
         }
         
         /* 
-         * Helper for the reverseOrder function.
+         * Helper for the public reverseOrder function.
          * @param tempRoot the root for the current subtree.
          */
         void reverseOrder(BSTNode<T> *&tempRoot){
