@@ -5,22 +5,29 @@
 
 class Word{
     public:
-        Word()
-        : count(1)
-        {}
+        Word();
         
-        Word(newWord)
-        : word(newWord),
-          count(1)
-        {}
+        Word(std::string newWord);
         
-        ~Word(){}
+        virtual ~Word();
         
-        string getWord() const{
-            return word;
-        }
+        std::string getWord() const;
+        
+        void setWord(std::string newWord);
+        
+        unsigned int getCount() const;
+        
+        void incrementCount();
+        
+        friend bool operator==(const Word &w1, const Word &w2);
+        
+        friend bool operator<(const Word &w1, const Word &w2);
+        
+        friend bool operator>(const Word &w1, const Word &w2);
+        
+        friend std::ostream& operator<<(std::ostream& out, const Word &word);
     
     private:
-        string word;
+        std::string word;
         unsigned int count;
 };

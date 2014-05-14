@@ -6,19 +6,21 @@
 template <typename T>
 class BSTNode{
     public:
-        BSTNode(){
+        BSTNode()
         : leftChild(NULL),
           rightChild(NULL),
           data(0)
         {}
         
-        BSTNode(int newData)
+        BSTNode(T newData)
         : leftChild(NULL),
           rightChild(NULL),
           data(newData)
         {}
         
-        virtual ~BSTNode(){}
+        virtual ~BSTNode(){
+            
+        }
         
         void setData(T newData){
             data = newData;
