@@ -62,7 +62,7 @@ bool BSTree::remove(int contents, BSTNode *&root){
                 delete oldRoot;
             }
             else{
-                removeMax(contents, root->getLeftChild());
+                removeMax(root->getContents(), root->getLeftChild());
             }
             size--;
             return true;
