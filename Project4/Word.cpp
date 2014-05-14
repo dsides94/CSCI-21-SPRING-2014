@@ -24,15 +24,15 @@ std::string Word::getWord() const{
     return word;
 }
 
-unsigned int Word::getCount() const{
-    return count;
-}
-
 void Word::setWord(std::string newWord){
     word = newWord;
     for(unsigned int i = 0; i < word.length(); i++){
         word[i] = tolower(word[i]);
     }
+}
+
+unsigned int Word::getCount() const{
+    return count;
 }
 
 void Word::incrementCount(){
