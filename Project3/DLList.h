@@ -1,3 +1,7 @@
+//
+// Grader comments 2014.05.14
+// -10 points total.
+//
 #pragma once
 
 #include <string>
@@ -73,6 +77,7 @@ class DLList{
         void popFront(){
             if(head != NULL){
                 if(head == tail){
+					size--;			// Rob: -5 points
                     delete head;
                     head = NULL;
                     tail = NULL;
@@ -93,6 +98,7 @@ class DLList{
         void popBack(){
             if(tail != NULL){
                 if(head == tail){
+					size--;			// Rob: -5 points
                     delete head;
                     head = NULL;
                     tail = NULL;
