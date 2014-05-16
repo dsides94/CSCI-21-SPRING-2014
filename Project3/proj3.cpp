@@ -78,16 +78,16 @@ int main(int argc, char *argv[])
                         try{
                             cout << "VALUE " << intList->getFront() << " AT HEAD" << endl;
                         }
-                        catch (DLListException e){
-                            cout << e.message << endl;
+                        catch (string e){
+                            cout << e << endl;
                         }
                     }
                     else if(operation == 'Z'){
                         try{
                             cout << "VALUE " << intList->getBack() << " AT TAIL" << endl;
                         }
-                        catch (DLListException e){
-                            cout << e.message << endl;
+                        catch (string e){
+                            cout << e << endl;
                         }
                     }
                     else if(operation == 'T'){
