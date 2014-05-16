@@ -1,3 +1,12 @@
+//
+// Grader comments 2014.05.15
+// + 50: naming conventions good
+// + 50: header documentation good
+// + 50: formatting good
+// +145: driver -- see comments below; look for "grader comments" and "Rob"
+// +150: DLNode good
+// +280: DLList -- see comments DLList.cpp
+// 
 /*
  * Programming Project 3
  * 
@@ -18,6 +27,10 @@
 #include <string>
 using namespace std;
 
+//
+// Grader comments 2014.05.15
+// -  5: A & Z should report "LIST EMPTY", not "VALUE  LIST EMPTY"
+//
 int main(int argc, char *argv[])
 {
     if(argc <= 1){

@@ -1,6 +1,6 @@
 //
 // Grader comments 2014.05.14
-// -10 points total.
+// -20 points total.
 //
 #pragma once
 
@@ -77,7 +77,7 @@ class DLList{
         void popFront(){
             if(head != NULL){
                 if(head == tail){
-					size--;			// Rob: -5 points
+					size--;			// Grader comments: -5 points
                     delete head;
                     head = NULL;
                     tail = NULL;
@@ -98,7 +98,7 @@ class DLList{
         void popBack(){
             if(tail != NULL){
                 if(head == tail){
-					size--;			// Rob: -5 points
+					size--;			// Grader comments: -5 points
                     delete head;
                     head = NULL;
                     tail = NULL;
@@ -169,6 +169,27 @@ class DLList{
             if(head == NULL || head->getContents() >= contents){
                 pushFront(contents);
             }
+			
+			//
+			// Grader comments 2014.05.15
+			// This should be <=, not >=; causes the sort to fail. Try this sequence and
+			// you'll see it.
+			// -10 points
+			//
+			/*
+				I 420
+				I 430
+				I 440
+				I 450
+				I 410
+				I 460
+				I 440
+				I 415
+				I 455
+				I 400
+				I 470
+			*/
+			//
             else if(tail->getContents() >= contents){
                 pushBack(contents);
             }
