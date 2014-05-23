@@ -208,7 +208,7 @@ class BSTree{
                 }
             }
             else{
-                return false;
+                return NULL;
             }
         }
         
