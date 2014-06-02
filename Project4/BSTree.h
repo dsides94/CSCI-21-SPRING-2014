@@ -8,6 +8,32 @@
 template <typename T>
 class BSTree{
     public:
+    	
+        //  Rob: added for testing
+		BSTNode<T>* getNode(T const& inContents) {
+			return getNode(inContents, getRoot());
+		}
+		
+		// Rob: added for testing
+		BSTNode<T>* getRoot() {
+			return root;
+		}
+    	
+		// Rob added for testing
+		BSTNode<T>* getNode(T const& inContents, BSTNode<T>* inBaseOfBranch) {
+			if(inBaseOfBranch == 0) {
+				return 0;
+			} else {
+				if(inContents == inBaseOfBranch->getData()) {
+					return inBaseOfBranch;
+				} else if(inContents < inBaseOfBranch->getData()) {
+					return getNode(inContents, inBaseOfBranch->getLeftChild());
+				} else {
+					return getNode(inContents, inBaseOfBranch->getRightChild());
+				}
+			}
+		}
+
         /*
          * Default Constructor.
          * Sets root to NULL and size to 0.
@@ -233,7 +259,14 @@ class BSTree{
         void inOrder(BSTNode<T> *&tempRoot){
             if(tempRoot != NULL){
                 inOrder(tempRoot->getLeftChild());
-                std::cout << tempRoot->getData() << ' ' << std::endl;
+				
+				//
+				// Grader comments 2014.05.02
+				// Shouldn't have a space here. Rob removed for testing purposes
+				// -5 points
+				//
+                std::cout << tempRoot->getData() << std::endl;
+				
                 inOrder(tempRoot->getRightChild());
             }
         }
@@ -245,7 +278,14 @@ class BSTree{
         void reverseOrder(BSTNode<T> *&tempRoot){
             if(tempRoot != NULL){
                 reverseOrder(tempRoot->getRightChild());
-                std::cout << tempRoot->getData() << ' ' << std::endl;
+				
+				//
+				// Grader comments 2014.05.02
+				// Shouldn't have a space here. Rob removed for testing purposes
+				// -5 points
+				//
+                std::cout << tempRoot->getData() << std::endl;
+
                 reverseOrder(tempRoot->getLeftChild());
             }
         }
